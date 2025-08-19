@@ -2,7 +2,7 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Progress } from "@/components/ui/progress";
-import { Users, MapPin, Clock, Zap, Shield } from "lucide-react";
+import { Users, MapPin, Clock, Zap, Shield, MessageCircle, Wrench } from "lucide-react";
 import serverLogo from "@/assets/server-logo.png";
 import serverBg from "@/assets/server-bg.png";
 
@@ -16,6 +16,8 @@ interface ServerCardProps {
   tags: string[];
   isOnline: boolean;
   featured?: boolean;
+  underDevelopment?: boolean;
+  discordLink?: string;
 }
 
 export const ServerCard = ({
@@ -27,7 +29,9 @@ export const ServerCard = ({
   gameMode,
   tags,
   isOnline,
-  featured = false
+  featured = false,
+  underDevelopment = false,
+  discordLink
 }: ServerCardProps) => {
   const playerPercentage = (players.current / players.max) * 100;
   
@@ -69,11 +73,17 @@ export const ServerCard = ({
           </div>
         </div>
         
-        {/* Game Mode Badge Only */}
-        <div className="flex justify-start mt-3">
+        {/* Game Mode Badge and Status */}
+        <div className="flex items-center justify-between mt-3">
           <Badge variant="secondary" className="text-xs font-medium bg-gradient-to-r from-secondary to-secondary/80 backdrop-blur-sm border border-primary/20">
             {gameMode}
           </Badge>
+          {underDevelopment && (
+            <Badge variant="outline" className="text-xs font-medium bg-gradient-to-r from-orange-500/20 to-orange-400/20 border-orange-400/30 text-orange-300">
+              <Wrench className="w-3 h-3 mr-1" />
+              Under Development
+            </Badge>
+          )}
         </div>
       </CardHeader>
       
@@ -119,16 +129,33 @@ export const ServerCard = ({
           </div>
         </div>
         
-        {/* Enhanced Join Button */}
-        <Button 
-          className="w-full font-bold text-base py-3 transition-all duration-500 hover:shadow-neon bg-gradient-to-r from-primary to-accent hover:from-primary/90 hover:to-accent/90 border border-primary/30" 
-          disabled={!isOnline}
-        >
-          <div className="flex items-center gap-2">
-            <Shield className="w-5 h-5" />
-            {isOnline ? "Connect to Server" : "Server Offline"}
-          </div>
-        </Button>
+        {/* Action Buttons */}
+        <div className="space-y-2">
+          {/* Enhanced Join Button */}
+          <Button 
+            className="w-full font-bold text-base py-3 transition-all duration-500 hover:shadow-neon bg-gradient-to-r from-primary to-accent hover:from-primary/90 hover:to-accent/90 border border-primary/30" 
+            disabled={!isOnline || underDevelopment}
+          >
+            <div className="flex items-center gap-2">
+              <Shield className="w-5 h-5" />
+              {underDevelopment ? "Coming Soon" : isOnline ? "Connect to Server" : "Server Offline"}
+            </div>
+          </Button>
+          
+          {/* Discord Button */}
+          {discordLink && (
+            <Button 
+              variant="outline" 
+              className="w-full transition-all duration-300 hover:bg-[#5865F2]/20 hover:border-[#5865F2]/50 hover:text-[#5865F2]"
+              onClick={() => window.open(discordLink, '_blank')}
+            >
+              <div className="flex items-center gap-2">
+                <MessageCircle className="w-4 h-4" />
+                Join Discord
+              </div>
+            </Button>
+          )}
+        </div>
       </CardContent>
     </Card>
   );

@@ -14,7 +14,8 @@ const mockServers = [
     gameMode: "Roleplay",
     tags: ["Serious RP", "Whitelisted", "Custom Jobs", "Economy"],
     isOnline: true,
-    featured: true
+    featured: true,
+    discordLink: "https://discord.gg/nopixel"
   },
   {
     name: "Eclipse RP",
@@ -25,7 +26,8 @@ const mockServers = [
     gameMode: "Heavy RP",
     tags: ["Heavy RP", "Text Based", "Realistic", "Adult"],
     isOnline: true,
-    featured: true
+    featured: true,
+    discordLink: "https://discord.gg/eclipserp"
   },
   {
     name: "GTA World",
@@ -35,7 +37,8 @@ const mockServers = [
     ping: 67,
     gameMode: "Text RP",
     tags: ["Text RP", "Heavy RP", "Realistic", "English"],
-    isOnline: true
+    isOnline: true,
+    discordLink: "https://discord.gg/gtaworld"
   },
   {
     name: "NewDay RP",
@@ -45,7 +48,9 @@ const mockServers = [
     ping: 34,
     gameMode: "Medium RP",
     tags: ["Medium RP", "Custom Scripts", "Active Staff"],
-    isOnline: true
+    isOnline: true,
+    underDevelopment: true,
+    discordLink: "https://discord.gg/newdayrp"
   },
   {
     name: "HighLife RP",
@@ -55,7 +60,8 @@ const mockServers = [
     ping: 56,
     gameMode: "Light RP",
     tags: ["Light RP", "Beginner Friendly", "Custom Cars"],
-    isOnline: true
+    isOnline: true,
+    discordLink: "https://discord.gg/highliferp"
   },
   {
     name: "Underground RP",
@@ -65,7 +71,9 @@ const mockServers = [
     ping: 28,
     gameMode: "Serious RP",
     tags: ["Serious RP", "Criminal RP", "Organizations"],
-    isOnline: false
+    isOnline: false,
+    underDevelopment: true,
+    discordLink: "https://discord.gg/undergroundrp"
   }
 ];
 
