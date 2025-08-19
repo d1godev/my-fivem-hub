@@ -33,30 +33,30 @@ export const ServerCard = ({
   
   return (
     <Card className={`group relative overflow-hidden hover:shadow-neon transition-all duration-500 hover:scale-[1.02] bg-gradient-card border-border/50 ${featured ? 'neon-border' : ''}`}>
-      {/* Background Image */}
+      {/* Subtle Background Image */}
       <div 
-        className="absolute inset-0 opacity-20 bg-cover bg-center transition-opacity duration-500 group-hover:opacity-30"
+        className="absolute inset-0 opacity-5 bg-cover bg-center transition-opacity duration-500 group-hover:opacity-10"
         style={{ backgroundImage: `url(${serverBg})` }}
       />
       
-      {/* Overlay Gradient */}
-      <div className="absolute inset-0 bg-gradient-to-br from-primary/10 via-transparent to-accent/10 opacity-60" />
+      {/* Subtle Overlay Gradient */}
+      <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-accent/5" />
       
-      <CardHeader className="relative pb-3 z-10">
+      <CardHeader className="relative pb-3 z-10 bg-background/20 backdrop-blur-sm border-b border-primary/10">
         <div className="flex items-start justify-between">
           <div className="flex-1">
             <div className="flex items-center gap-3 mb-2">
               {/* Server Logo */}
-              <div className="relative">
+              <div className="relative p-1 rounded-lg bg-gradient-to-br from-primary/20 to-accent/20 border border-primary/30">
                 <img 
                   src={serverLogo} 
                   alt="Server Logo" 
-                  className="w-8 h-8 rounded-lg shadow-lg ring-2 ring-primary/30 transition-transform duration-300 group-hover:scale-110"
+                  className="w-8 h-8 rounded-md shadow-lg transition-transform duration-300 group-hover:scale-110"
                 />
-                <div className={`absolute -top-1 -right-1 w-3 h-3 rounded-full ${isOnline ? 'bg-gaming-green' : 'bg-destructive'} animate-pulse shadow-lg`} />
+                <div className={`absolute -top-1 -right-1 w-3 h-3 rounded-full ${isOnline ? 'bg-gaming-green' : 'bg-destructive'} animate-pulse shadow-lg ring-2 ring-background/50`} />
               </div>
               
-              <div className="flex-1">
+              <div className="flex-1 bg-background/30 backdrop-blur-sm rounded-lg p-2 border border-primary/10">
                 <div className="flex items-center gap-2">
                   <h3 className={`font-bold text-lg transition-all duration-300 ${featured ? 'glow-text text-xl' : 'group-hover:text-primary'}`}>
                     {name}
@@ -71,18 +71,18 @@ export const ServerCard = ({
         
         {/* Game Mode Badge Only */}
         <div className="flex justify-start mt-3">
-          <Badge variant="secondary" className="text-xs font-medium bg-secondary/80 backdrop-blur-sm">
+          <Badge variant="secondary" className="text-xs font-medium bg-gradient-to-r from-secondary to-secondary/80 backdrop-blur-sm border border-primary/20">
             {gameMode}
           </Badge>
         </div>
       </CardHeader>
       
-      <CardContent className="relative space-y-4 z-10">
+      <CardContent className="relative space-y-4 z-10 bg-background/10 backdrop-blur-sm">
         {/* Enhanced Player Progress */}
-        <div className="space-y-3">
+        <div className="space-y-3 bg-background/20 backdrop-blur-sm rounded-lg p-3 border border-primary/10">
           <div className="flex items-center justify-between text-sm">
             <div className="flex items-center gap-2 text-muted-foreground">
-              <div className="p-1 rounded bg-primary/20">
+              <div className="p-2 rounded-lg bg-gradient-to-br from-primary/30 to-primary/20 border border-primary/30">
                 <Users className="w-4 h-4 text-primary" />
               </div>
               <span className="font-medium">Players Online</span>
